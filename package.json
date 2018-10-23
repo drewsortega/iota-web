@@ -4,7 +4,8 @@
   "description": "An example project for the LUG IOTA presentation.",
   "main": "src/index.js",
   "scripts": {
-    "test": "nodemon src/index.js"
+    "test": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [
     "iota",
@@ -15,5 +16,15 @@
     "rpi"
   ],
   "author": "Oregon State University Linux Users' Group",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "morgan": "^1.9.1",
+    "winston": "^3.1.0"
+  }
 }
