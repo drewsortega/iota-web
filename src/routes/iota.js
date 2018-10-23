@@ -7,22 +7,26 @@ let router = express.Router();
 const data = require('../data');
 
 router.post('/button/enable', (req, res) => {
-    data.buttonEnabled = true;
-    res.status(200).json({ message: 'success' });
+    data.enableButton();
+    res.status(200).json({success: true});
 });
 
 router.post('/button/disable', (req, res) => {
-    data.buttonEnabled = false;
-    res.status(200).json({ message: 'success'});
+    data.disableButton();
+    res.status(200).json({success: true});
 });
 
 router.post('/temp', (req, res) => {
-    if(!_.isNil(req.query.value)){
-        data.temp = req.query.temp;
-        res.status(200).json({ message: 'success'});
-    }else{
-        res.status(500).json({ message: 'bad value'});
+    if (!_.isNil(req.query.value)) {
+        data.setTemp(req.query.value);
+        res.status(200).json({success: true});
+    } else {
+        res.status(200).json({success: false, error: 'bad value. try /temp?value=40'});
     }
+});
+
+router.get('/data', (req, res) => {
+    res.json(data);
 });
 
 module.exports = router;

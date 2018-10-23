@@ -1,36 +1,34 @@
 'use strict';
 
-const path = require('path');
+const port = process.env.PORT || 2031;
 
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const winston = require('winston');
+const data = require('./data');
+const logger = require('./logger');
+
+var server = require('http').createServer(app);
+const io = require('socket.io')(server);
+
+data.on('changed', () => console.log('changed')); //eslint-disable-line
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    transports: [
-        //
-        // - Write to all logs with level `info` and below to `combined.log` 
-        // - Write all logs error (and below) to `error.log`.
-        //
-        new winston.transports.File({ filename: path.join(__dirname, '..', 'temp/error.log'), level: 'error' }),
-        new winston.transports.File({ filename: path.join(__dirname, '..', 'temp/combined.log') }),
-        new winston.transports.Console({ format: winston.format.simple() })
-    ]
-});
 
-var server = app.listen(process.env.PORT || 2031, () => {
+io.on('connection', function (socket) {
+    data.on('changed', () => {
+        socket.emit('data', data.toObject());
+    });
+});
+var expressServer = server.listen(port, () => {
 
     require('./routes')(app);
 
-    logger.info({message: `ready on port ${server.address().port}`});
+    logger.info({ message: `ready on port ${server.address().port}` });
 });
 
-module.exports = server;
+module.exports = expressServer;
