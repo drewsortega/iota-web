@@ -3,10 +3,9 @@
 
 const express = require('express');
 let router = express.Router();
-const data = require('../data');
 
 router.get('/', (req, res) => {
-    res.json(data.toObject());
+    res.sendFile('../public/index.html');
 });
 
 module.exports = router;
