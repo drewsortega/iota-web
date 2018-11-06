@@ -34,7 +34,6 @@ curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "POST");
 curl_easy_setopt(hnd, CURLOPT_URL, "http://flip3.engr.oregonstate.edu:2031/iota/temp?value=14");
 
 struct curl_slist *headers = NULL;
-headers = curl_slist_append(headers, "Postman-Token: 45ad1f75-7753-4a16-9fbb-fd9b069b5d1a");
 headers = curl_slist_append(headers, "cache-control: no-cache");
 headers = curl_slist_append(headers, "Content-Type: application/json");
 curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
@@ -53,8 +52,7 @@ payload = "{\n\t\"value\": \"testvalue\"\n}"
 
 headers = {
     'Content-Type': "application/json",
-    'cache-control': "no-cache",
-    'Postman-Token': "18b2dffe-1e5a-481c-a018-ed679ebed111"
+    'cache-control': "no-cache"
     }
 
 conn.request("POST", "iota,temp", payload, headers)
