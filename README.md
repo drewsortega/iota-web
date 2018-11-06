@@ -9,7 +9,8 @@ This code lives as an example/demo for the Oregon State University Linux Users' 
 2) Clone this GitHub repository into desired location ```git clone https://github.com/drewsortega/iota-web.git```
 3) Open a terminal in the project directory and Install NPM Packages (Node.js are already installed on the OSU flip servers). ```npm install```
 4) Start the server via ```npm start```. If you are given an error at startup, go into src/index.js and change the value for PORT to something that is not currently in use, or set the PORT environment variable. Continue to change this until you find an open port on the server.
-5) If you would like to keep this web service running without the terminal being open it, you may start the server with *screen*. For example, use ```screen npm start``` and press Ctrl+a+d to detatch and let it run in the background, and enter ```screen -R``` to reattach to the instance. More information on [screen](https://www.gnu.org/software/screen/manual/screen.html) or [tmux](https://www.systutorials.com/docs/linux/man/1-tmux/)
+5) Once an open port has been found, edit public/index.html, line 4. Change http://localhost:2031 to your address, ex. http://flip3.engr.oregonstate.edu:2031
+6) If you would like to keep this web service running without the terminal being open it, you may start the server with *screen*. For example, use ```screen npm start``` and press Ctrl+a+d to detatch and let it run in the background, and enter ```screen -R``` to reattach to the instance. More information on [screen](https://www.gnu.org/software/screen/manual/screen.html) or [tmux](https://www.systutorials.com/docs/linux/man/1-tmux/)
 
 ## Usage
 **A living version is available at http://flip3.engr.oregonstate.edu:2031**
