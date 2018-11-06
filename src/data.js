@@ -26,6 +26,7 @@ util.inherits(Data, EventEmitter);
 
 Data.prototype.enableButton = function enableButton(){
     this._buttonPushed = true;
+    //emit the changed event, which is listened for. When this event is emitted, socket.io picks it up and sends over another value.
     this.emit('changed');
 };
 
@@ -45,6 +46,7 @@ Data.prototype.setAnalog = function setAnalog(value){
 };
 
 Data.prototype.toObject = function toObject(){
+    //write as new object without reference to local data for protection
     return {
         buttonPushed: this._buttonPushed,
         temp: this._temp,
