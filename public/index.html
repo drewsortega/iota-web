@@ -5,8 +5,11 @@
         socket.on('data', function (data) {
             document.getElementById("button-state").textContent=data.buttonPushed;
             document.getElementById("temp-state").textContent=data.temp;
+            document.getElementById("analog-state").textContent=data.analog;
+            console.log(data);
         });
     </script>
     <div><h3>button</h3><span id="button-state"></span></div>
     <div><h3>temp</h3><span id="temp-state"></span></div>
+    <div><h3>analog</h3><span id="analog-state"></span></h3></div>
 </html>

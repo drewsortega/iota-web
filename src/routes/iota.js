@@ -25,6 +25,15 @@ router.post('/temp', (req, res) => {
     }
 });
 
+router.post('/analog', (req, res) => {
+    if(!_.isNull(req.query.value)) {
+        data.setAnalog(req.query.value);
+        res.status(200).json({success: true});
+    }else{
+        res.etatus(200).json({sucess: false, error: 'bad value. try /analog?value=0.01'});
+    }
+});
+
 router.get('/data', (req, res) => {
     res.json(data);
 });

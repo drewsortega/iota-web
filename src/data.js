@@ -2,7 +2,6 @@
 
 const EventEmitter = require('events').EventEmitter;
 const util = require('util');
-const logger = require('./logger');
 
 //create object
 function Data() {
@@ -12,6 +11,10 @@ function Data() {
             writable: true
         },
         _temp: {
+            value: 0,
+            writable: true
+        },
+        _analog: {
             value: 0,
             writable: true
         }
@@ -36,10 +39,16 @@ Data.prototype.setTemp = function setTemp(temp){
     this.emit('changed');
 };
 
+Data.prototype.setAnalog = function setAnalog(value){
+    this._analog = value;
+    this.emit('changed');
+};
+
 Data.prototype.toObject = function toObject(){
     return {
         buttonPushed: this._buttonPushed,
-        temp: this._temp
+        temp: this._temp,
+        analog: this._analog
     };
 };
 

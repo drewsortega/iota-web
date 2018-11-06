@@ -25,6 +25,9 @@ Button
 Temp
 * POST: http://flip3.engr.oregonstate.edu:2031/temp?value=VALUE , where value is some number
 
+Analog
+* POST: http://flip3.engr.oregonstate.edu:2031/analog?value=VALUE , where value is some number
+
 ### Code POST Request examples (generated with Postman):
 C & LibCurl
 ```C
