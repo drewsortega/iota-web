@@ -26,23 +26,25 @@ Button
 Temp
 * POST: http://flip3.engr.oregonstate.edu:2031/temp?value=VALUE , where value is some number
 
-Analog
-* POST: http://flip3.engr.oregonstate.edu:2031/analog?value=VALUE , where value is some number
+Knob (previosuly 'analog')
+* POST: http://flip3.engr.oregonstate.edu:2031/knob?value=VALUE , where value is some number
 
+Relative Humidity
+* POST: http://flip3.engr.oregonstate.edu:2031/rh?value=VALUE , where value is some number
+
+Light
+* POST: http://flip3.engr.oregonstate.edu:2031/light?value=VALUE , where value is some number
 ### Code POST Request examples (generated with Postman):
 C & LibCurl
 ```C
 CURL *hnd = curl_easy_init();
 
 curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "POST");
-curl_easy_setopt(hnd, CURLOPT_URL, "http://flip3.engr.oregonstate.edu:2031/iota/temp?value=14");
+curl_easy_setopt(hnd, CURLOPT_URL, "http://flip3.engr.oregonstate.edu:2031/iota/button/enable");
 
 struct curl_slist *headers = NULL;
 headers = curl_slist_append(headers, "cache-control: no-cache");
-headers = curl_slist_append(headers, "Content-Type: application/json");
 curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
-
-curl_easy_setopt(hnd, CURLOPT_POSTFIELDS, "{\n\t\"value\": \"testvalue\"\n}");
 
 CURLcode ret = curl_easy_perform(hnd);
 ```
@@ -52,14 +54,11 @@ import http.client
 
 conn = http.client.HTTPConnection("flip3,engr,oregonstate,edu")
 
-payload = "{\n\t\"value\": \"testvalue\"\n}"
-
 headers = {
-    'Content-Type': "application/json",
     'cache-control': "no-cache"
     }
 
-conn.request("POST", "iota,temp", payload, headers)
+conn.request("POST", "iota,button,enable", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
