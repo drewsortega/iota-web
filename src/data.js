@@ -14,7 +14,15 @@ function Data() {
             value: 0,
             writable: true
         },
-        _analog: {
+        _light: {
+            value: 0,
+            writable: true
+        },
+        _knob: {
+            value: 0,
+            writable: true
+        },
+        _rh: {
             value: 0,
             writable: true
         }
@@ -40,8 +48,18 @@ Data.prototype.setTemp = function setTemp(temp){
     this.emit('changed');
 };
 
-Data.prototype.setAnalog = function setAnalog(value){
-    this._analog = value;
+Data.prototype.setLight = function setLight(value){
+    this._light = value;
+    this.emit('changed');
+};
+
+Data.prototype.setRh = function setRh(value){
+    this._rh = value;
+    this.emit('changed');
+};
+
+Data.prototype.setKnob = function setKnob(value){
+    this._knob = value;
     this.emit('changed');
 };
 
@@ -50,7 +68,9 @@ Data.prototype.toObject = function toObject(){
     return {
         buttonPushed: this._buttonPushed,
         temp: this._temp,
-        analog: this._analog
+        light: this._light,
+        knob: this._knob,
+        rh: this._rh,
     };
 };
 

@@ -24,6 +24,7 @@ app.use(express.static('public'));
 io.on('connection', function (socket) {
     socket.emit('data', data.toObject());
     data.on('changed', () => {
+        console.log('somethin changed');
         socket.emit('data', data.toObject());
     });
 });

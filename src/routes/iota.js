@@ -31,18 +31,51 @@ router.post('/temp', (req, res) => {
     }
 });
 
-//POST /iota/analog?value=0.15
-router.post('/analog', (req, res) => {
+//POST /iota/light?value=0.15
+router.post('/light', (req, res) => {
     //ensure a query was provided 
     if(!_.isNull(req.query.value)) {
         //set data value
-        data.setAnalog(req.query.value);
+        data.setLight(req.query.value);
         //send success
         res.status(200).json({success: true});
     }else{
         //send error
-        res.etatus(200).json({sucess: false, error: 'bad value. try /analog?value=0.01'});
+        res.status(200).json({sucess: false, error: 'bad value. try /iota/light?value=0.01'});
     }
+});
+
+//POST /iota/knob?value=0.15
+router.post('/knob', (req, res) => {
+    //ensure a query was provided 
+    if(!_.isNull(req.query.value)) {
+        //set data value
+        data.setKnob(req.query.value);
+        //send success
+        res.status(200).json({success: true});
+    }else{
+        //send error
+        res.status(200).json({sucess: false, error: 'bad value. try /iota/knob?value=0.01'});
+    }
+});
+
+//POST /iota/rh?value=0.15
+router.post('/rh', (req, res) => {
+    //ensure a query was provided 
+    if(!_.isNull(req.query.value)) {
+        //set data value
+        data.setRh(req.query.value);
+        //send success
+        res.status(200).json({success: true});
+    }else{
+        //send error
+        res.status(200).json({sucess: false, error: 'bad value. try /iota/rh?value=0.01'});
+    }
+});
+
+//POST /iota/analog?value=0.15
+router.post('/analog', (req, res) => {
+    res.redirect('/iota/knob');
 });
 
 //GET /data
