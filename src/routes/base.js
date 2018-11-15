@@ -6,7 +6,7 @@ let router = express.Router();
 
 //GET /
 router.get('/', (req, res) => {
-    res.sendFile('../public/index.html');
+    res.render('home', { server_url: `${process.env.SERVER_URL}:${process.env.PORT}`});
 });
 
 module.exports = router;
