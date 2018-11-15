@@ -8,11 +8,9 @@
         //every time data is received, update the values
         socket.on('data', function (data) {
             document.getElementById("button-state").textContent=data.buttonPushed;
-            document.getElementById("light-state").textContent=data.light;
             document.getElementById("knob-state").textContent=data.knob;
         });
     </script>
     <div><h3>button</h3><span id="button-state"></span></div>
-    <div><h3>light</h3><span id="light-state"></span></h3></div>
     <div><h3>knob</h3><span id="knob-state"></span></h3></div>
 </html>

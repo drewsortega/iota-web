@@ -23,17 +23,9 @@ Button
 * POST: http://flip3.engr.oregonstate.edu:2031/iota/button/enable
 * POST: http://flip3.engr.oregonstate.edu:2031/iota/button/disable
 
-Temp
-* POST: http://flip3.engr.oregonstate.edu:2031/temp?value=VALUE , where value is some number
-
 Knob (previosuly 'analog')
 * POST: http://flip3.engr.oregonstate.edu:2031/knob?value=VALUE , where value is some number
 
-Relative Humidity
-* POST: http://flip3.engr.oregonstate.edu:2031/rh?value=VALUE , where value is some number
-
-Light
-* POST: http://flip3.engr.oregonstate.edu:2031/light?value=VALUE , where value is some number
 ### Code POST Request examples (generated with Postman):
 C & LibCurl
 ```C
